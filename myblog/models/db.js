@@ -1,16 +1,19 @@
-//配置数据库
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
+var mysql = require('mysql');
+var pool  = mysql.createPool({
     host     : 'localhost',
     user     : 'root',
     password : '',
     database : 'myblog'
 });
-exports.query = function(sql,callback){
-    connection.connect();
-    connection.query(sql, function (error, rows) {
-        if (error) throw error;
-        callback(rows);
-        connection.end();
+
+exports.query = function (sql, param, callback) {
+    pool.getConnection(function(err, connection) {
+        connection.query(sql, param, function(err, rows) {
+            if(err){
+                throw  err;
+            }
+            callback && callback(rows);
+            connection.release();
+        });
     });
 };
