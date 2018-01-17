@@ -5,7 +5,7 @@ exports.queryByNamePwd = function (username, password, callback) {
     db.query(sql, [username, password], callback);
 };
 
-exports.save = function(email,username,password,callback){
-    var sql="insert t_user(email,username,password) values(?,?,?)";
-    db.query(sql,[email,username,password],callback);
+exports.save = function (username, password, email, callback) {
+    var sql = 'insert into t_user(username, password, email) values(?,?,?)';
+    db.query(sql, [username, password, email], callback);
 };

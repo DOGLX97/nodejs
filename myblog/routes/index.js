@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
-//引入控制器（引入模块）
-var user = require('../controllers/user');
 var welcome = require('../controllers/welcome');
-//路由做转发
+var user = require('../controllers/user');
+var admin = require('../controllers/admin');
 
 router.get('/', welcome.index);
 router.get('/login', user.login);
 router.get('/reg', user.reg);
-router.post('/checkLogin',user.checkLogin);
-router.post('/regist',user.regist);
+router.post('/checkLogin', user.checkLogin);
+router.post('/regist', user.regist);
+router.get('/adminIndex', admin.index);
+
+
 module.exports = router;
