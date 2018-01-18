@@ -3,6 +3,10 @@ var userModel = require('../models/userModel');
 exports.login = function(req, res) {
     res.render('login');//跳转
 };
+exports.logout = function(req, res) {
+    req.session.loginUser = null;
+    res.redirect('/login');//跳转
+};
 
 exports.reg = function(req, res) {
     res.render('reg');
@@ -16,7 +20,7 @@ exports.checkLogin = function(req, res) {
         if(result.length > 0){
             var user = result[0];
             req.session.loginUser =  user;//{user_id:1, username:'lisi'}
-            res.redirect('/');//重定向
+            res.redirect('/adminIndex');//重定向
             // res.render('index', {user: ''});
         }else{
             res.redirect('/login');

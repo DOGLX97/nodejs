@@ -28,26 +28,7 @@
         <a href="/adminIndex">返回我的首页</a>&nbsp;»
     	<span id="AdminTitle">发表博客</span>
     </div>
-    <div id="AdminMenu"><ul>
-	<li class="caption">个人信息管理		
-		<ol>
-			<li><a href="inbox.htm">站内留言(0/1)</a></li>
-			<li><a href="profile.htm">编辑个人资料</a></li>
-			<li><a href="chpwd.htm">修改登录密码</a></li>
-			<li><a href="userSettings.htm">网页个性设置</a></li>
-		</ol>
-	</li>		
-</ul>
-<ul>
-	<li class="caption">博客管理	
-		<ol>
-			<li class="current"><a href="/newBlog">发表博客</a></li>
-			<li><a href="blogCatalogs.htm">博客设置/分类管理</a></li>
-			<li><a href="blogs.htm">文章管理</a></li>
-			<li><a href="blogComments.htm">博客评论管理</a></li>
-		</ol>
-	</li>
-</ul>
+    <% include adminMenu.ejs %>
 </div>
     <div id="AdminContent">
 <div class="MainForm">
@@ -60,14 +41,15 @@
     <input name="title" id="f_title" class="TEXT" style="width: 400px;" type="text">
 	存放于 
 	<select name="catalog">
-	)
-	  <option selected="selected" value="92334">工作日志</option>
-	)
-	  <option value="92335">日常记录</option>
-	)
-	  <option value="92336">转贴的文章</option>
+		<%
+ 		for(var i=0;i<types.length;i++){
+ 		%>
+	  		<option value= <%= types[i].type_id %> ><%= types[i].type_name %></option>
+		<%
+		}
+ 		%>
 		</select>
-	<a href="blogCatalogs.htm" onclick="return confirm('是否放弃当前编辑进入分类管理？');">分类管理»</a>
+	<a href="/blogType" onclick="return confirm('是否放弃当前编辑进入分类管理？');">分类管理»</a>
 	</td>
   </tr>
   <tr><td class='t'>内容（必填） 
