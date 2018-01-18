@@ -14,10 +14,10 @@ exports.checkLogin = function(req, res) {
 
     userModel.queryByNamePwd(username, password, function (result) {
         if(result.length > 0){
-            // var user = result[0];
-            // req.session.loginUser =  user;//{user_id:1, username:'lisi'}
-            // res.redirect('/adminIndex');//重定向
-            res.render('index', {user: ''});
+            var user = result[0];
+            req.session.loginUser =  user;//{user_id:1, username:'lisi'}
+            res.redirect('/');//重定向
+            // res.render('index', {user: ''});
         }else{
             res.redirect('/login');
         }
@@ -42,3 +42,4 @@ exports.regist = function(req, res) {
         }
     });
 };
+

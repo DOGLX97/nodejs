@@ -21,43 +21,7 @@
 <style>ul.tabnav {padding: 3px 10px 4px 10px;}</style>
 <![endif]-->
 <div id="OSC_Screen"><!-- #BeginLibraryItem "/Library/OSC_Banner.lbi" -->
-<div id="OSC_Banner">
-    <div id="OSC_Slogon">Johnny's Blog</div>
-    <div id="OSC_Channels">
-        <ul>
-        <li><a href="#" class="project">心情 here...</a></li>
-        </ul>
-    </div>
-    <div class="clear"></div>
-</div><!-- #EndLibraryItem --><div id="OSC_Topbar">
-	  <div id="VisitorInfo">
-		当前访客身份：
-          <%= uname%> [ <a href="javascript:login()">登录</a> | <a href="#">注册</a> ]
-				<span id="OSC_Notification">
-			<a href="#" class="msgbox" title="进入我的留言箱">你有<em>0</em>新留言</a>
-					</span>
-		</div>
-		<div id="SearchBar">
-    		<form action="#">
-								<input name="user" value="154693" type="hidden">
-																								<input id="txt_q" name="q" class="SERACH" value="在此空间的博客中搜索" onblur="(this.value=='')?this.value='在此空间的博客中搜索':this.value" onfocus="if(this.value=='在此空间的博客中搜索'){this.value='';};this.select();" type="text">
-				<input class="SUBMIT" value="搜索" type="submit">
-    		</form>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div id="OSC_Content"><div class="SpaceChannel">
-	<div id="portrait"><a href="#"><img src="//images/portrait.gif" alt="Johnny" title="Johnny" class="SmallPortrait" user="154693" align="absmiddle"></a></div>
-    <div id="lnks">
-		<strong>Johnny的博客</strong>
-		<div>
-			<a href="#">TA的博客列表</a>&nbsp;|
-			<a href="javascript:sendmsg(154693)">发送留言</a>
-</span>
-		</div>
-	</div>
-	<div class="clear"></div>
-</div>
+<% include header.ejs %>
 <div class="Blog">
 	
 
@@ -187,7 +151,7 @@ function ReplyInline(blog,user,reply){
 </script>
 </div>
 	<div class="clear"></div>
-	<div id="OSC_Footer">© 唯创网讯</div>
+<% include footer.ejs %>
 </div>
 <script type="text/javascript" src="/javascripts/space.htm" defer="defer"></script>
 <script type="text/javascript">
