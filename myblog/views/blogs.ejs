@@ -17,7 +17,7 @@
     <div id="OSC_Content">
         <div id="AdminScreen">
             <div id="AdminPath">
-                <a href="index_logined.htm">返回我的首页</a>&nbsp;»
+                <a href="/adminIndex">返回我的首页</a>&nbsp;»
                 <span id="AdminTitle">博客文章管理</span>
             </div>
             <% include adminMenu.ejs%>
@@ -36,10 +36,10 @@
                                 var blog = blogs[i];
                         %>
                         <li class="row_1">
-                            <input name="blog" value="<%=blog.blog_id%>" type="checkbox">
+                            <input name="blog" value="<%=blog.article_id%>" type="checkbox">
                             <a href="viewPost_comment.htm" target="_blank"><%=blog.title%></a>
                             - <%=blog.type_name%>
-                            <small><%=blog.create_time.toLocaleString()%></small>
+                            <span style="float:right"><%= blog.post_date.toLocaleString() %></span>
                         </li>
                         <%
                         }
@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="clear"></div>
-    <div id="OSC_Footer">© 唯创网讯</div>
+    <% include footer.ejs %>
 </div>
 <script src="/javascripts/jquery-1.11.3.min.js"></script>
 <script>
@@ -67,7 +67,7 @@
            //url, data, callback, dataType
            $.get('/delBlog', {blogIds: valueStr}, function(data){
                if(data == 'success'){
-                    alert('删除成功!');
+                   alert('删除成功!');
                    $checked.parent().remove();
                }
            }, 'text');

@@ -16,6 +16,9 @@ router.get('/viewPost',blog.viewPost);
 router.get('/newBlog',admin.newBlog);
 router.get('/blogType',admin.blogType);
 router.post('/addBlogType',admin.addBlogType);
+router.get('/blogs',admin.listBlog);
+router.post('/saveBlog',admin.saveBlog);
+router.get('/delBlog',admin.delBlog);
 
 
 module.exports = router;
